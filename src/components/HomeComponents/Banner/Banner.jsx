@@ -1,30 +1,60 @@
-import banner from '../../../assets/images/banner-temp.jpg'
+import banner from '../../../assets/images/banner-temp.jpg';
+import cat1 from '../../../assets/images/products/watch-1.jpg';
+import cat2 from '../../../assets/images/products/belt.jpg';
+import cat3 from '../../../assets/images/products/clothes-1.jpg';
+import cat4 from '../../../assets/images/products/shoe-2.jpg';
 const Banner = () => {
     const categories = [
         {
             id: '1',
-            title: 'title1',
-            quantity: 20,
-            image: 'https://png.pngtree.com/png-vector/20230808/ourmid/pngtree-blue-dress-vector-png-image_6889320.png'
+            title: 'Watch',
+            quantity: 300,
+            image: cat1
         },
         {
             id: '2',
-            title: 'title2',
-            quantity: 20,
-            image: 'https://png.pngtree.com/png-vector/20230808/ourmid/pngtree-blue-dress-vector-png-image_6889320.png'
+            title: 'Belt',
+            quantity: 1200,
+            image: cat2
         },
         {
             id: '3',
-            title: 'title3',
-            quantity: 20,
-            image: 'https://png.pngtree.com/png-vector/20230808/ourmid/pngtree-blue-dress-vector-png-image_6889320.png'
+            title: 'Cloth',
+            quantity: 220,
+            image: cat3
         },
         {
             id: '4',
-            title: 'title4',
-            quantity: 20,
-            image: 'https://png.pngtree.com/png-vector/20230808/ourmid/pngtree-blue-dress-vector-png-image_6889320.png'
+            title: 'Shoes',
+            quantity: 100,
+            image: cat4
         },
+        {
+            id: '4',
+            title: 'Shoes',
+            quantity: 100,
+            image: cat4
+        },
+        {
+            id: '4',
+            title: 'Shoes',
+            quantity: 100,
+            image: cat4
+        },
+        {
+            id: '4',
+            title: 'Shoes',
+            quantity: 100,
+            image: cat4
+        },
+        {
+            id: '4',
+            title: 'Shoes',
+            quantity: 100,
+            image: cat4
+        },
+
+
     ]
     return (
         <div className={`h-[calc(100vh-160px)] space-y-2  px-32`}>
@@ -32,22 +62,22 @@ const Banner = () => {
                 <img className="w-full h-full rounded-md" src={banner} alt="" />
             </div>
 
-            <div className='grid grid-cols-4 h-[20%] gap-5 '>
+
+            <div className='grid grid-cols-8 items-center w-full h-[20%] gap-5'>
                 {
-                    categories.map(data => <div key={data.id} className='px-2 relative rounded-md bg-gray-600 grid grid-cols-3 gap-3 items-center w-full h-full'>
-                        <div className=' bg-gray-200  rounded-md col-span-1'>
-                            <img className='' src={data.image} alt="" />
-                        </div>
-                        <div className='col-span-2 '>
-                            <h1 className='text-2xl font-bold'>{data.title}</h1>
-                            <button className=" text-red-400">see all</button>
-                        </div>
-                        <div className=' col-span-1 absolute top-2 right-2'>
-                            <h3>{data.quantity} pcs</h3>
-                        </div>
-                    </div>)
+                    categories.map((category, index) =>
+                        <div className='flex items-center h-1/2 justify-center shadow-xl gap-3 cursor-pointer hover:border-b-4 hover:border-red-500' key={index}>
+                            <div>
+                                <img className='w-14' src={category.image} alt="" />
+                            </div>
+                            <div>
+                                <h1>{category.title}</h1>
+                            </div>
+                        </div>)
                 }
             </div>
+
+
         </div>
     );
 };

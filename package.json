@@ -10,8 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@smastrom/react-rating": "^1.5.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-id-swiper": "^4.0.0",
+    "swiper": "^11.1.0",
+    "swiper-react": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
