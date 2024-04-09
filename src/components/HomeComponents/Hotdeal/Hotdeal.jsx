@@ -1,4 +1,5 @@
 
+import CountdownTimer from '../../../Utility/CountdownTimer';
 import image from '../../../assets/images/products/shampoo.jpg'
 import { newProduct } from './NewProduct';
 import { Rating } from '@smastrom/react-rating'
@@ -30,19 +31,13 @@ const Hotdeal = () => {
                                 <h1>Available:140</h1>
                             </div>
                             <div>
-                                progress line
+                                <progress className="progress progress-primary w-full" value="7" max="100"></progress>
                             </div>
 
                         </div>
                         <div>
                             <h2>The offer end in:</h2>
-                            <div className='grid grid-cols-4 gap-2 w-[40%]'>
-                                <div className='bg-gray-300 w-14 h-14 rounded-md'></div>
-                                <div className='bg-gray-300 w-14 h-14 rounded-md'></div>
-                                <div className='bg-gray-300 w-14 h-14 rounded-md'></div>
-                                <div className='bg-gray-300 w-14 h-14 rounded-md'></div>
-
-                            </div>
+                            <CountdownTimer ></CountdownTimer>
                         </div>
 
                     </div>
@@ -74,8 +69,8 @@ const Hotdeal = () => {
                                                 readOnly
                                             />
                                             <div className='flex gap-3 font-bold'>
-                                                <h2 className='text-pink-400'>{data.discountPrice+'$'}</h2>
-                                                <h2 className='line-through'>{data.price+'$'}</h2>
+                                                <h2 className='text-pink-400'>{data.discountPrice + '$'}</h2>
+                                                <h2 className='line-through'>{data.price + '$'}</h2>
                                             </div>
                                         </div>
                                     </div>

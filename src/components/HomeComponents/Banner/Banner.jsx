@@ -3,11 +3,13 @@ import cat1 from '../../../assets/images/products/watch-1.jpg';
 import cat2 from '../../../assets/images/products/belt.jpg';
 import cat3 from '../../../assets/images/products/clothes-1.jpg';
 import cat4 from '../../../assets/images/products/shoe-2.jpg';
+import useProducts from '../../../Hooks/useProducts/useProducts';
+import { useState } from 'react';
 const Banner = () => {
     const categories = [
         {
             id: '1',
-            title: 'Watch',
+            title: 'Sunglasses',
             quantity: 300,
             image: cat1
         },
@@ -19,7 +21,7 @@ const Banner = () => {
         },
         {
             id: '3',
-            title: 'Cloth',
+            title: 'T-shirts',
             quantity: 220,
             image: cat3
         },
@@ -30,32 +32,23 @@ const Banner = () => {
             image: cat4
         },
         {
-            id: '4',
-            title: 'Shoes',
+            id: '5',
+            title: 'Jewelry',
             quantity: 100,
             image: cat4
         },
         {
-            id: '4',
-            title: 'Shoes',
+            id: '6',
+            title: 'Toiletries',
             quantity: 100,
             image: cat4
         },
-        {
-            id: '4',
-            title: 'Shoes',
-            quantity: 100,
-            image: cat4
-        },
-        {
-            id: '4',
-            title: 'Shoes',
-            quantity: 100,
-            image: cat4
-        },
+        
 
 
-    ]
+    ];
+    const[typeValue,setType] =useState('watch');
+    useProducts(typeValue);
     return (
         <div className={`h-[calc(100vh-160px)] space-y-2  px-32`}>
             <div className='w-full h-[80%]'>
@@ -63,10 +56,10 @@ const Banner = () => {
             </div>
 
 
-            <div className='grid grid-cols-8 items-center w-full h-[20%] gap-5'>
+            <div className='grid grid-cols-6 items-center w-full h-[20%] gap-5'>
                 {
                     categories.map((category, index) =>
-                        <div className='flex items-center h-1/2 justify-center shadow-xl gap-3 cursor-pointer hover:border-b-4 hover:border-red-500' key={index}>
+                        <div className='flex items-center h-1/2 justify-center shadow-xl border rounded-md gap-3 cursor-pointer hover:border-b-4 hover:border-b-red-500' key={index}>
                             <div>
                                 <img className='w-14' src={category.image} alt="" />
                             </div>

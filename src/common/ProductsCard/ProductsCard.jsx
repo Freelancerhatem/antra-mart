@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 const ProductsCard = ({ data }) => {
     return (
-        <div className="flex bg-white h-44 shadow-md  rounded-md items-center justify-center">
+        <div className="flex bg-white h-44 shadow-md border  rounded-md items-center justify-center">
             <div className="">
                 <img className="w-24" src={data.image} alt="" />
             </div>
