@@ -1,7 +1,7 @@
 
 const Footer = () => {
     const year = new Date().getFullYear();
-    console.log(year)
+    
     return (
         <div className="bg-[#282727] h-[50vh]  text-white">
             <div className=" grid grid-cols-4 px-32 h-[80%]">
