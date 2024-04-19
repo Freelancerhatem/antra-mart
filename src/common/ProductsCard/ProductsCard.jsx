@@ -1,6 +1,8 @@
-
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 const ProductsCard = ({ data }) => {
+    
+    
     return (
         <div className="flex bg-white h-44 shadow-md border  rounded-md items-center justify-center">
             <div className="">
@@ -12,7 +14,11 @@ const ProductsCard = ({ data }) => {
                     <h3 className="">{data.offerPrice + '$'}</h3>
                     <h3 className="line-through">{data.regularPrice + '$'}</h3>
                 </div>
+                <div>
+                    <Link to={`/products/${data._id}`} className="px-4 py-2 bg-red-300 rounded-md font-semibold">Add Cart</Link>
+                </div>
             </div>
+            
         </div>
     );
 };

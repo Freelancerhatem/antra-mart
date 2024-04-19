@@ -3,16 +3,17 @@ import { useQuery } from "@tanstack/react-query";
 
 const useProducts = (query) => {
     const axiosLoader = useAxios();
-    
-    const{data:AllProducts=[],refetch:refetchAllProducts} = useQuery({
+    console.log('use',query)
+    const{data:allProducts=[],isLoading,refetch:refetchAllProducts} = useQuery({
         queryKey:['allProducts'],
         queryFn:async()=>{
+            
             const res = await axiosLoader.get(`/allProducts?category=${query}`)
             return res.data
         }
     });
-
-    return[AllProducts,refetchAllProducts]
+    
+    return[allProducts,isLoading,refetchAllProducts]
      
 };
 

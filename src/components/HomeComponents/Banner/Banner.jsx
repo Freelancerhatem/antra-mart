@@ -47,6 +47,7 @@ const Banner = ({AllProducts,typeProduct,setType}) => {
 
 
     ];
+    
     return (
         <div className={`h-[calc(100vh-160px)] space-y-2  px-32`}>
             <div className='w-full h-[80%]'>
