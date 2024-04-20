@@ -1,6 +1,9 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/images/logo_black.png'
+import { useContext } from 'react';
+import { AntraMartContext } from '../../../Hooks/ContextProvider/ContextProvider';
 const Navbar = () => {
+    const { cartNumber } = useContext(AntraMartContext)
     return (
         <div className="grid grid-rows-4 h-36 px-32 ">
             <div className="row-span-1 ">
@@ -23,13 +26,20 @@ const Navbar = () => {
                 </div>
 
                 <div className='col-span-1'>
-                    <label htmlFor="">
-                        <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+                    <div className='w-8 h-8 relative flex justify-center items-center'>
 
-                        </svg>
+                        <label htmlFor="">
+                            <Link to={'/product_cart'}>
+                                <svg className="w-6 h-6 relative text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
 
-                    </label>
+                                </svg>
+                            </Link>
+
+                        </label>
+                        <h2 className='absolute -top-1/2 -right-1 w-6 h-6 flex justify-center items-center bg-red-400 rounded-full text-xl text-black'>{cartNumber}</h2>
+
+                    </div>
                 </div>
             </div>
             {/* middle nav end*/}

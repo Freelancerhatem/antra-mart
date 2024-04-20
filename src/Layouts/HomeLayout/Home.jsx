@@ -9,22 +9,30 @@ import useAxios from "../../Hooks/useAxios/useAxios";
 const Home = () => {
     const [typeProduct, setType] = useState('watch');
     const AxiosLoader = useAxios();
-    const [allProducts, setAllProducts] = useState([])
-    // const[allProducts,isLoading,refetchAllProducts] = useProducts(typeProduct);
-    console.log(typeProduct)
+    const [allProducts, setAllProducts] = useState([]);
+    const [loadingFetchData, setloadingFetchData] = useState(true)
+    // my cart number
+    
+    
+    
     useEffect(() => {
         AxiosLoader.get(`/allProducts?category=${typeProduct}`)
-            .then(res => setAllProducts(res.data))
+            .then(res => {
+                if (res.data.length > 0) {
+                    setloadingFetchData(false)
+                    setAllProducts(res.data)
+                }
+            })
     }, [AxiosLoader, typeProduct])
 
     return (
         <div>
-            
+
             <Banner typeProduct={typeProduct} setType={setType}></Banner>
-            <CategoryProducts allProducts={allProducts} ></CategoryProducts>
+            <CategoryProducts allProducts={allProducts} loadingFetchData={loadingFetchData} typeProduct={typeProduct} ></CategoryProducts>
             <Hotdeal></Hotdeal>
             <Services></Services>
-            
+
         </div>
     );
 };
