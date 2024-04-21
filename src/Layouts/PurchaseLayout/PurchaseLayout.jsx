@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AntraMartContext } from "../../Hooks/ContextProvider/ContextProvider";
 
 const PurchaseLayout = () => {
     const myCartProdcuts = JSON.parse(localStorage.getItem('myCart'));
     const [quantities, setQuantities] = useState({});
+    const{handleRemoveCart} = useContext(AntraMartContext)
 
     const handleDecrease = (id) => {
         setQuantities(prevQuantities => ({
@@ -17,6 +19,8 @@ const PurchaseLayout = () => {
             [id]: (prevQuantities[id] || 1) + 1
         }));
     };
+
+    
 
     return (
         <div className="min-h-[50vh] w-screen px-32 py-14 bg-green-400">
@@ -45,6 +49,12 @@ const PurchaseLayout = () => {
                                 </td>
                                 <td>
                                     {product.offerPrice * (quantities[product._id] || 1)}
+                                </td>
+                                <td>
+                                    <button className="btn">Buy Now</button>
+                                </td>
+                                <td>
+                                    <button onClick={()=>handleRemoveCart(product._id)} className="btn">Remove Item</button>
                                 </td>
                             </tr>
                         )
