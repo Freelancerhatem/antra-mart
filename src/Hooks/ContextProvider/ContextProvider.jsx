@@ -4,25 +4,26 @@ import PropTypes from 'prop-types';
 
 export const AntraMartContext = createContext({});
 const ContextProvider = ({ children }) => {
-
+    
     const [cartNumber, SetCartNumber] = useState(0);
-    const[myCartProdcuts,SetmyCartProdcuts] = useState([])
+    const[myCartProducts,SetMyCartProducts] = useState([])
+    
     useEffect(() => {
-        const myCartProductsNumber = JSON.parse(localStorage.getItem('myCart')) || [];
-        SetCartNumber(myCartProductsNumber.length)
+        const myCartProductsArray = JSON.parse(localStorage.getItem('myCart')) || [];
+        SetCartNumber(myCartProductsArray.length)
+        SetMyCartProducts(myCartProductsArray);
     }, []);
 
-    useEffect(() => {
-        const myCartProdcuts = JSON.parse(localStorage.getItem('myCart'));
-        SetmyCartProdcuts(myCartProdcuts);
-    }, [])
+    
 
     const handleRemoveCart = (id) => {
-        const targetCartIndex = myCartProdcuts.filter(products => products._id !== id);
-        if (targetCartIndex) {
+        const updatedCartProducts = myCartProducts.filter(products => products._id !== id);
+        if (updatedCartProducts) {
             
-            localStorage.setItem('myCart', JSON.stringify(targetCartIndex));
-            SetCartNumber(targetCartIndex.length)
+            localStorage.setItem('myCart', JSON.stringify(updatedCartProducts));
+            SetCartNumber(updatedCartProducts.length);
+            SetMyCartProducts(updatedCartProducts)
+            
         }
 
     }
@@ -31,7 +32,9 @@ const ContextProvider = ({ children }) => {
     const provider = {
         cartNumber,
         SetCartNumber,
-        handleRemoveCart
+        handleRemoveCart,
+        myCartProducts,
+        SetMyCartProducts
     }
     return (
         <AntraMartContext.Provider value={provider}>

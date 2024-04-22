@@ -16,12 +16,12 @@ const AddCart = () => {
             .then(res => setProductsData(res.data))
     }, [AxiosLoader, id]);
     // console.log(productsData);
-    const [productColor, SetproductColor] = useState('default');
-    const{SetCartNumber} = useContext(AntraMartContext)
+    const [productColor, SetProductColor] = useState('default');
+    const{SetCartNumber,SetMyCartProducts} = useContext(AntraMartContext)
 
     // add to cart functionality
-    const handleAddtoCart = () => {
-        // console.log(productsData)
+    const handleAddToCart = () => {
+        
         let myCartArray = JSON.parse(localStorage.getItem('myCart')) || [];
         const myCartDuplicateChecker = myCartArray.some(data => data._id == productsData._id)
         if (!myCartDuplicateChecker) {
@@ -30,6 +30,7 @@ const AddCart = () => {
 
             localStorage.setItem('myCart', JSON.stringify(myCartArray));
             SetCartNumber(pre=>pre+1)
+            SetMyCartProducts(myCartArray)
             
         }
         else {
@@ -61,15 +62,15 @@ const AddCart = () => {
                     <div>
                         <h1>Color:{productColor}</h1>
                         <div className="flex gap-1 m-2 w-20 h-10">
-                            <div onClick={() => SetproductColor('Amber')} className={`bg-amber-400 w-6 h-6  rounded-full ${productColor == 'Amber' ? 'border-4 border-white' : ''}`}></div>
-                            <div onClick={() => SetproductColor('Red')} className={`bg-red-500 w-6 h-6 rounded-full ${productColor == 'Red' ? 'border-4 border-white' : ''}`}></div>
+                            <div onClick={() => SetProductColor('Amber')} className={`bg-amber-400 w-6 h-6  rounded-full ${productColor == 'Amber' ? 'border-4 border-white' : ''}`}></div>
+                            <div onClick={() => SetProductColor('Red')} className={`bg-red-500 w-6 h-6 rounded-full ${productColor == 'Red' ? 'border-4 border-white' : ''}`}></div>
                         </div>
                     </div>
 
                 </div>
                 <div className="flex gap-2">
                     <button className="btn">Buy Now</button>
-                    <button onClick={() => handleAddtoCart(_id)} className="btn">Add To Cart</button>
+                    <button onClick={() => handleAddToCart(_id)} className="btn">Add To Cart</button>
                 </div>
             </div>
         </div>

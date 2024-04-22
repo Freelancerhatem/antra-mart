@@ -2,9 +2,10 @@ import { useContext, useState } from "react";
 import { AntraMartContext } from "../../Hooks/ContextProvider/ContextProvider";
 
 const PurchaseLayout = () => {
-    const myCartProdcuts = JSON.parse(localStorage.getItem('myCart'));
+    
     const [quantities, setQuantities] = useState({});
-    const{handleRemoveCart} = useContext(AntraMartContext)
+    const{handleRemoveCart,myCartProducts} = useContext(AntraMartContext);
+    console.log(myCartProducts)
 
     const handleDecrease = (id) => {
         setQuantities(prevQuantities => ({
@@ -36,7 +37,7 @@ const PurchaseLayout = () => {
                     </tr>
 
                     {
-                        myCartProdcuts?.map((product, index) =>
+                        myCartProducts?.map((product, index) =>
                             <tr className="" key={index}>
                                 <td>{index + 1}</td>
                                 <td className=""><img className="w-12 h-12" src={product.image} alt="" /></td>
