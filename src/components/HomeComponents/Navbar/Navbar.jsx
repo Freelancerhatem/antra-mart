@@ -71,7 +71,7 @@ const Navbar = () => {
                     About
                 </NavLink>
                 <NavLink
-                    to="/login"
+                    to="/registration"
                     className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "text-red-600" : ""
                     }

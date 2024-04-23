@@ -6,6 +6,8 @@ import Home from "../Layouts/HomeLayout/Home";
 import AddCart from "../Layouts/AddCartLayout/AddCart";
 import MainLayout from "../Layouts/MainLayout/MainLayout";
 import PurchaseLayout from "../Layouts/PurchaseLayout/PurchaseLayout";
+import Registration from "../Pages/Registration/Registration";
+import Login from "../Pages/Login/Login";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -25,5 +27,13 @@ export const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path:'/registration',
+        element:<Registration></Registration>
+    },
+    {
+        path:'/login',
+        element:<Login></Login>
+    }
     
 ]);

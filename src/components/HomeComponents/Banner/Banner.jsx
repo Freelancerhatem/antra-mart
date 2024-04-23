@@ -4,6 +4,8 @@ import cat2 from '../../../assets/images/products/belt.jpg';
 import cat3 from '../../../assets/images/products/clothes-1.jpg';
 import cat4 from '../../../assets/images/products/shoe-2.jpg';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { AntraMartContext } from '../../../Hooks/ContextProvider/ContextProvider';
 
 const Banner = ({AllProducts,typeProduct,setType}) => {
     const categories = [
@@ -47,6 +49,9 @@ const Banner = ({AllProducts,typeProduct,setType}) => {
 
 
     ];
+
+    const{loginUser} = useContext(AntraMartContext);
+    console.log(loginUser)
     
     return (
         <div className={`h-[calc(100vh-160px)] space-y-2  px-32`}>
