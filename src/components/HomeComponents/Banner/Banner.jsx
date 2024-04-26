@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { AntraMartContext } from '../../../Hooks/ContextProvider/ContextProvider';
 
-const Banner = ({AllProducts,typeProduct,setType}) => {
+const Banner = ({typeProduct,setType}) => {
     const categories = [
         {
             id: '1',
@@ -49,6 +49,7 @@ const Banner = ({AllProducts,typeProduct,setType}) => {
 
 
     ];
+    
 
     const{loginUser} = useContext(AntraMartContext);
     console.log(loginUser)

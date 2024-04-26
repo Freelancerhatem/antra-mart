@@ -1,10 +1,13 @@
 
+import useProducts from '../../../Hooks/useProducts/useProducts';
 import CountdownTimer from '../../../Utility/CountdownTimer';
 import image from '../../../assets/images/products/shampoo.jpg'
 import { newProduct } from './NewProduct';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 const Hotdeal = () => {
+    const[NewProducts] = useProducts();
+    
 
     return (
         <div className='px-32 '>
@@ -49,7 +52,7 @@ const Hotdeal = () => {
                     <h1 className='text-2xl font-bold'>New Products</h1>
                     <div className='grid grid-cols-4 gap-5'>
                         {
-                            newProduct.map((data, index) =>
+                            NewProducts.slice(0,4).map((data, index) =>
                                 <div key={index} className='shadow-xl flex flex-col'>
                                     <div>
                                         <img src={data.image} alt="" />
@@ -65,12 +68,12 @@ const Hotdeal = () => {
                                         <div>
                                             <Rating
                                                 style={{ maxWidth: 70 }}
-                                                value={3}
+                                                value={data.rating}
                                                 readOnly
                                             />
                                             <div className='flex gap-3 font-bold'>
-                                                <h2 className='text-pink-400'>{data.discountPrice + '$'}</h2>
-                                                <h2 className='line-through'>{data.price + '$'}</h2>
+                                                <h2 className='text-pink-400'>{data.regularPrice + '$'}</h2>
+                                                <h2 className='line-through'>{data.offerPrice + '$'}</h2>
                                             </div>
                                         </div>
                                     </div>

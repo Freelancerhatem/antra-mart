@@ -20,71 +20,90 @@ const PurchaseLayout = () => {
     }));
   };
 
+  // Calculate total price for each product
+  const calculateTotalPrice = (product) => {
+    return (product.offerPrice * (quantities[product._id] || 1)).toFixed(2);
+  };
+
+  // Calculate total price of all products in the cart
+  const totalPrice = myCartProducts.reduce(
+    (acc, product) =>
+      acc + (product.offerPrice * (quantities[product._id] || 1)),
+    0
+  ).toFixed(2);
+
   return (
-    <div className="min-h-[50vh] w-screen px-32 py-14 bg-green-400">
+    <div className="min-h-[50vh] w-screen  flex justify-center px-32 py-14 ">
       {myCartProducts?.length == 0 ? (
         <div className=" text-center">
           <h1 className="text-3xl font-bold">Empty Cart</h1>
         </div>
       ) : (
-        <table className="">
-          <tbody>
-            <tr className="">
-              <th>Sr.</th>
-              <th></th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total Price</th>
-            </tr>
-            {myCartProducts?.map((product, index) => (
-              <tr className="" key={index}>
-                <td>{index + 1}</td>
-                <td className="">
-                  <img className="w-12 h-12" src={product.image} alt="" />
-                </td>
-                <td>{product.title.slice(0, 10)}...</td>
-                <td>{product.offerPrice}</td>
-                <td className="flex gap-1 justify-center items-center">
-                  <button
-                    disabled={
-                      quantities[product._id] === 1 ||
-                      quantities[product._id] === undefined
-                    }
-                    onClick={() => handleDecrease(product._id)}
-                    className="text-xl"
-                  >
-                    -
-                  </button>
-                  <input
-                    value={quantities[product._id] || 1}
-                    className="w-[30%] text-center"
-                    type="text"
-                    readOnly
-                  />
-                  <button
-                    onClick={() => handleIncrease(product._id)}
-                    className="text-xl"
-                  >
-                    +
-                  </button>
-                </td>
-                <td>{product.offerPrice * (quantities[product._id] || 1)}</td>
-                <td>
-                  <button className="btn">Buy Now</button>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleRemoveCart(product._id)}
-                    className="btn"
-                  >
-                    Remove Item
-                  </button>
-                </td>
+        <div>
+          <table className="">
+            <tbody>
+              <tr className="">
+                <th>Sr.</th>
+                <th></th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+
+              {myCartProducts?.map((product, index) => (
+                <tr className="" key={index}>
+                  <td>{index + 1}</td>
+                  <td className="">
+                    <img className="w-12 h-12" src={product.image} alt="" />
+                  </td>
+                  <td>{product.title.slice(0, 10)}...</td>
+                  <td>{product.offerPrice}</td>
+                  <td className="flex gap-1 justify-center items-center">
+                    <button
+                      disabled={
+                        quantities[product._id] === 1 ||
+                        quantities[product._id] === undefined
+                      }
+                      onClick={() => handleDecrease(product._id)}
+                      className="text-xl"
+                    >
+                      -
+                    </button>
+                    <input
+                      value={quantities[product._id] || 1}
+                      className="w-[30%] bg-gray-200 text-center"
+                      type="text"
+                      readOnly
+                    />
+                    <button
+                      onClick={() => handleIncrease(product._id)}
+                      className="text-xl"
+                    >
+                      +
+                    </button>
+                  </td>
+                  <td>{calculateTotalPrice(product)}</td>
+
+                  <td>
+                    <button
+                      onClick={() => handleRemoveCart(product._id)}
+                      className="btn btn-xs"
+                    >
+                      Remove Item
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <hr className="border-dashed border-2 bg-black" />
+          <div className="flex justify-between py-5">
+           
+            <h2 className="text-xl font-bold">Price: ${totalPrice}</h2>
+            <button className="btn btn-xs">Make Payment</button>
+          </div>
+        </div>
       )}
     </div>
   );
