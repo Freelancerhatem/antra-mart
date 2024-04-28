@@ -52,7 +52,7 @@ const PurchaseLayout = () => {
               </tr>
 
               {myCartProducts?.map((product, index) => (
-                <tr className="" key={index}>
+                <tr className=" border" key={index}>
                   <td>{index + 1}</td>
                   <td className="">
                     <img className="w-12 h-12" src={product.image} alt="" />
